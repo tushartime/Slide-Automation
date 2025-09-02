@@ -85,6 +85,11 @@ export const onUserInfo = async ()=>{
 export const onSubscribe = async (session_id: string)=>{
     const user = await onCurrentUser();
     try {
+        // Return early if Stripe is not configured
+        if (!stripe) {
+            return {status: 400, error: "Stripe not configured"}
+        }
+
         const session = await stripe.checkout.sessions.retrieve(session_id);
         if(session){
             const subscribed = await updateSubscription(user.id, {customerId: session.customer as string , plan: "PRO"});
