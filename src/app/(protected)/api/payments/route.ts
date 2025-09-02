@@ -8,6 +8,16 @@ export async function GET() {
 
   const priceId = process.env.STRIPE_SUBSCRIPTION_PRICE_ID
 
+  // If Stripe isn't configured, return a mock session URL so the app can run
+  // without payment processing in development.
+  if (!stripe || !process.env.STRIPE_CLIENT_SECRET || !priceId) {
+    return NextResponse.json({
+      status: 200,
+      session_url: `${process.env.NEXT_PUBLIC_HOST_URL || 'http://localhost:3000'}/payment?mock=true`,
+      mock: true,
+    })
+  }
+
   const session = await stripe.checkout.sessions.create({
     mode: 'subscription',
     line_items: [

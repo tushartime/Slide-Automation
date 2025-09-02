@@ -97,6 +97,7 @@ export default function Home() {
                 alt="Community member"
                 fill
                 className="object-cover"
+                priority
               />
             </div>
           </div>

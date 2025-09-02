@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import PaymentCard from './payment-card'
 import { useQueryUser } from '@/hooks/user-queries'
