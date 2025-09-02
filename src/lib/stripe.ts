@@ -4,6 +4,6 @@ import Stripe from 'stripe'
 // in development environments where Stripe is not configured.
 export const stripe: Stripe | null = process.env.STRIPE_CLIENT_SECRET
   ? new Stripe(process.env.STRIPE_CLIENT_SECRET, {
-      apiVersion: '2024-06-20',
+      apiVersion: '2025-02-24.acacia',
     })
   : null

@@ -71,7 +71,8 @@ export async function POST(req: NextRequest) {
           if (
             automation.listener &&
             automation.listener.listener === 'SMARTAI' &&
-            automation.User?.subscription?.plan === 'PRO'
+            automation.User?.subscription?.plan === 'PRO' &&
+            openai
           ) {
             const smart_ai_message = await openai.chat.completions.create({
               model: 'gpt-4o',
@@ -181,7 +182,8 @@ export async function POST(req: NextRequest) {
             }
             if (
               automation.listener.listener === 'SMARTAI' &&
-              automation.User?.subscription?.plan === 'PRO'
+              automation.User?.subscription?.plan === 'PRO' &&
+              openai
             ) {
               const smart_ai_message = await openai.chat.completions.create({
                 model: 'gpt-4o',
@@ -246,7 +248,8 @@ export async function POST(req: NextRequest) {
 
         if (
           automation?.User?.subscription?.plan === 'PRO' &&
-          automation.listener?.listener === 'SMARTAI'
+          automation.listener?.listener === 'SMARTAI' &&
+          openai
         ) {
           const smart_ai_message = await openai.chat.completions.create({
             model: 'gpt-4o',
