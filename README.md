@@ -1,4 +1,4 @@
-# Slide - Instagram Automation Platform
+# Slide - Sales Automation Platform
 
 A Next.js application that automates Instagram DMs and comments to boost engagement and turn interactions into business opportunities.
 
